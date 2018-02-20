@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/fahimc/Component/issues"
   },
-  "homepage": "https://github.com/fahimc/Component#readme"
+  "homepage": "https://github.com/fahimc/Component#readme",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp-minify": "^2.1.0"
+  }
 }
