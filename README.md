@@ -1,4 +1,5 @@
 
+
 # Component. 
 This is a very small (1.3kb) ES6 component framework to enable you to build apps in a similar fashion as vuejs.
 
@@ -23,13 +24,18 @@ The best thing about this framework is that it can work with everything and does
 1. First you need to include the script on to your page.
 
 ```html
-	<script type="text/javascript" src="component.min.js"></script>
+  <script type="text/javascript" src="component.min.js"></script>
 ```
+There is many version of this framework for you to use:  
+ - **ES6** (dist/component[min].js): This is for use with evergreen browsers and doesn't work on IE11
+ - **ES5** (dist/es5 support/component.es5[.min].js): This has polyfills and support for IE11. 
+ - **AMD**   (dist/module/component.module[.min].js): for use as a module and allows import of **Component** class.
+
 2. setup you html page. A an element and give it a **data-component** attribute and inside that attribute give your component a name. In this example I will be calling my component 'container'. this element will be your template so add your template syntax within side the element. I've added a **h1** tag. you will need to copy the whole element to create another instance. I know it's not really a template of you have to duplicate the structure for every instance so there is a solution for this which I will show you later. If you don't use that approach you have to copy and paste your component template to everywhere you use it.
 
 ```html
 <div data-component="container">
-	<h1></h1>
+  <h1></h1>
 </div>
 ```
 
