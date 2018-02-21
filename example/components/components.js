@@ -1,9 +1,7 @@
 let component = new Component({
   name: 'container',
   data: {
-    message: {
-       data: 'hello world'
-    }
+    message: 'hello world'
   },
   methods: {
     getMessage() {
@@ -12,8 +10,8 @@ let component = new Component({
     mounted(){
         
     },
-    update(){
-      this.element.querySelector('h1').textContent = this.message.data;
+    updated(){
+      this.element.querySelector('h1').textContent = this.message;
     }
   }
 });
