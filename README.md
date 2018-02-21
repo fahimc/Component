@@ -65,9 +65,4 @@ This code creates a new component called 'container' and you can set the name in
 
 
 # Component Lifecycle
-<img src='https://g.gravizo.com/svg?
- digraph G {
-   Component -> mounted -> umounted;
-   mounted -> updated;
- }
-'/>
+<img src='//g.gravizo.com/svg?digraph G {Component -> mounted -> umounted;mounted -> updated;}'/>
