@@ -1,6 +1,6 @@
 
 # Component. 
-This is a very small (2kb) ES6 component framework to enable you to build apps in a similar fashion as vuejs.
+This is a very small (1.3kb) ES6 component framework to enable you to build apps in a similar fashion as vuejs.
 
 The aim is to give you the bare minimum required for a component framework to reduce file size so it's perfect for project which have a size limit.
 
@@ -68,16 +68,16 @@ This code creates a new component called 'container' and you can set the name in
 ```
  ___________
 | Component |
- -----------
+ ___________
      |
      |
  _________
 | mounted |
- ---------       ---------
+ _________       _________
      |--------- | updated |
-     |           --------- 
+     |           _________
      |
   _________
 | unmounted |
-  ---------     
+  _________     
 ```
