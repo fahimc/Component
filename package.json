@@ -17,9 +17,20 @@
   },
   "homepage": "https://github.com/fahimc/Component#readme",
   "dependencies": {
+    "browserify": "^16.1.0",
     "gulp": "^3.9.1"
   },
   "devDependencies": {
-    "gulp-minify": "^2.1.0"
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^8.0.0",
+    "gulp-append-prepend": "^1.0.4",
+    "gulp-babel": "^7.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-ext-replace": "^0.3.0",
+    "gulp-minify": "^2.1.0",
+    "gulp-requirejs": "^1.1.1",
+    "gulp-uglify": "^3.0.0"
   }
 }

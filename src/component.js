@@ -10,8 +10,9 @@ const ComponentManager = {
     },
     generateComponents() {
         for (let key in this.componentCollection) {
-            let obj = this.componentCollection[key];
-            this.createAllInstance(obj);
+            let obj = this.componentCollection[key].obj;
+            let template = this.componentCollection[key].template;
+            this.createAllInstance(obj,template);
         };
     },
     observe() {
@@ -26,8 +27,9 @@ const ComponentManager = {
                     item.addedNodes.forEach((element) => {
                         let componentName = element.getAttribute(`${Component.CONST.COMPONENT_ATTRIBUTE}`);
                         if (componentName) {
-                            let obj = this.componentCollection[componentName];
-                            this.createInstance(element, obj);
+                            let obj = this.componentCollection[componentName].obj;
+                            let template = this.componentCollection[componentName].template;
+                            this.createInstance(element, obj,template);
                         }
                     });
                 }
@@ -35,29 +37,32 @@ const ComponentManager = {
         });
         observer.observe(document.body, { childList: true });
     },
-    createAllInstance(obj) {
+    createAllInstance(obj,template) {
         let elements = document.querySelectorAll(`[${Component.CONST.COMPONENT_ATTRIBUTE}="${obj.name}"]`);
         elements.forEach((element) => {
-            this.createInstance(element, obj)
+            this.createInstance(element, obj, template)
         });
     },
-    createInstance(element, obj) {
+    createInstance(element, obj,templateString) {
+        let templateElement = document.querySelector(`[${Component.CONST.COMPONENT_ATTRIBUTE}="${obj.name}"][${Component.CONST.TEMPLATE_ATTRIBUTE}]`);
+        let template = templateElement ? templateElement : templateString;
         let instance = new ComponentInstance(element, obj.data, obj.methods);
         element.component = instance;
+        if(template)element.innerHTML = typeof template == 'string' ? template : template.innerHTML;
         instance.mounted();
         instance.updated();
-        //this.instanceCollection.push(instance);
     }
 };
-ComponentManager.init();
+
 class Component {
-    constructor(obj) {
-        ComponentManager.componentCollection[obj.name] = obj;
+    constructor(obj,template) {
+        ComponentManager.componentCollection[obj.name] = {obj:obj,template:template};
     }
 
 };
 Component.CONST = {
-    COMPONENT_ATTRIBUTE: 'data-component'
+    COMPONENT_ATTRIBUTE: 'data-component',
+    TEMPLATE_ATTRIBUTE: 'data-template'
 };
 class ComponentInstance {
     constructor(element, data, methods) {
@@ -94,3 +99,4 @@ class ComponentInstance {
 
     }
 }
+ComponentManager.init();

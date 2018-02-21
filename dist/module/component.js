@@ -100,3 +100,4 @@ class ComponentInstance {
     }
 }
 ComponentManager.init();
+export default Component;

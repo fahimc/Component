@@ -1,3 +1,5 @@
+import Component from '../../../../dist/module/component.module.js';
+
 let component = new Component({
   name: 'container',
   data: {
