@@ -27,9 +27,9 @@ The best thing about this framework is that it can work with everything and does
   <script type="text/javascript" src="component.min.js"></script>
 ```
 There is many version of this framework for you to use:  
- - **ES6** (dist/component[min].js): This is for use with evergreen browsers and doesn't work on IE11
- - **ES5** (dist/es5 support/component.es5[.min].js): This has polyfills and support for IE11. 
- - **AMD**   (dist/module/component.module[.min].js): for use as a module and allows import of **Component** class.
+ - **ES6** (dist/component[min].js): This is for use with evergreen browsers and doesn't work on IE11. **size** - 1.3kb.
+ - **ES5** (dist/es5 support/component.es5[.min].js): This has polyfills and support for IE11.  **size** - 6kb
+ - **AMD**   (dist/module/component.module[.min].js): for use as a module and allows import of **Component** class. **size** -  1.3kb
 
 2. setup you html page. A an element and give it a **data-component** attribute and inside that attribute give your component a name. In this example I will be calling my component 'container'. this element will be your template so add your template syntax within side the element. I've added a **h1** tag. you will need to copy the whole element to create another instance. I know it's not really a template of you have to duplicate the structure for every instance so there is a solution for this which I will show you later. If you don't use that approach you have to copy and paste your component template to everywhere you use it.
 
@@ -86,4 +86,56 @@ This code creates a new component called 'container' and you can set the name in
   _________
 | unmounted |
   _________     
+```
+
+## Adding Templates
+There are many ways you can add templates and not have to replicate the HTML.
+
+### Specify a temlplate element  
+You can set one of your components to be the template and place the tags within it. The rest do not need anything within it as the framework will take the HTML from the template and create it for each instance of the component. 
+
+To do this all you need to do is add a `data-template` attribute to a component element.
+
+```html
+<div data-component="hero" data-template>
+        <h1></h1>
+        <p>this is sub text</p>
+</div>
+
+<div data-component="hero">
+</div>
+
+<div data-component="hero">
+</div>
+```
+
+### Template from a String 
+You can specify the template as a string upon creating the component and then you don't need to have a tag on the dom. If you supply the second argument with a string with html then this will be used for the element innerHTML.
+
+Whenever an element is added to the dom with that component name, then it will generate the html for it.
+
+```js
+let componentStringTemplate = new Component({
+  name: 'dyno',
+  data: {
+    message: 'I am a dyno component'
+  },
+  methods: {
+    getMessage() {
+      return this.message;
+    },
+    mounted(){
+        
+    },
+    updated(){
+      this.element.querySelector('h1').textContent = this.message;
+    }
+  }
+},`<h1></h1><p>this is dynamically added</p>
+<button>click here</button>`);
+
+//create a component and add it to the dom
+ let section = document.createElement('section');
+ section.setAttribute('data-component', 'dyno');
+ document.body.appendChild(section);
 ```
