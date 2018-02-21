@@ -10,7 +10,10 @@ let component = new Component({
       return this.message;
     },
     mounted(){
-        this.element.querySelector('h1').textContent = this.message.data;
+        
+    },
+    update(){
+      this.element.querySelector('h1').textContent = this.message.data;
     }
   }
 });

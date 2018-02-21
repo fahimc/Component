@@ -45,6 +45,7 @@ const ComponentManager = {
     let instance = new ComponentInstance(element, obj.data, obj.methods);
     element.component = instance;
     instance.mounted();
+    instance.update();
     //this.instanceCollection.push(instance);
   }
 };
@@ -69,7 +70,7 @@ class ComponentInstance {
         },
         set(new_value) {
           this[`_${key}`] = new_value;
-          this.mounted();
+          this.update();
         }
       });
       this[key] = data[key];
@@ -82,6 +83,9 @@ class ComponentInstance {
 
   }
   unmounted() {
+
+  }
+  update() {
 
   }
 }
