@@ -161,10 +161,10 @@ export default new Component({
   }
 });
 ```    
-As you can see we are changing the textContent of a H1 tag withing the instance. You can access the element by calling this.element.
+As you can see we are changing the textContent of a H1 tag withing the instance. You can access the element by calling `this.element`.
 
 ## Access the element  
-Every instance of a component gets passed an element and you can access it by calling this.element.
+Every instance of a component gets passed an element and you can access it by calling `this.element`.
 
 ## Build project
 To build your project, run the following command:
