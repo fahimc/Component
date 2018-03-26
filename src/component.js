@@ -20,7 +20,15 @@ const ComponentManager = {
             mutations.forEach((item) => {
                 if (item.removedNodes.length) {
                     item.removedNodes.forEach((element) => {
-                        if (element.component) element.component.unmounted();
+                        if (element.component) {
+                            element.component.unmounted();
+                            for(var=0;a<this.instanceCollection.length;++a){
+                                    if(this.instanceCollection[instance] == element.component){
+                                        this.collection.splice(a,1);    
+                                        break;
+                                    }
+                            }
+                        }
                     });
                 }
                 if (item.addedNodes.length) {
@@ -51,6 +59,7 @@ const ComponentManager = {
         if(template)element.innerHTML = typeof template == 'string' ? template : template.innerHTML;
         instance.mounted();
         instance.updated();
+        this.instanceCollection.push(instance);
     }
 };
 
