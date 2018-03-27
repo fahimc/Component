@@ -1,5 +1,6 @@
 
 
+
 # Component. 
 This is a very small (1.3kb) ES6 component framework to enable you to build apps in a similar fashion as vuejs.
 
@@ -170,4 +171,48 @@ Every instance of a component gets passed an element and you can access it by ca
 To build your project, run the following command:
 ```cmd
 npm run dist
+```
+
+## Creating Plugins
+If you want to create plugins or add extra functionality to a component instance then you can do this by doing the following
+
+There is a `ComponentManager` global object that you can access and this has an array called `plugins`. 
+If you push a `function` into this array then when a new instance of a component is created it will pass the instance into the function so you can either add functionality to the instance, create a mixin or do something else. 
+
+### Example
+Lets create a function to change the background which will be applied to all the components.
+
+1. Create you function
+```js
+function updateBackground(instance){
+  instance.backgroundUpdate = function(){
+    this.element.style.backgroundColor = '#000';
+  }
+}
+```
+2. Add the function to the plugins array  
+```js
+ComponentManager.plugins.push(updateBackground);
+```
+3. Let's try it!  
+Execute the new mthod within a component.
+```js
+new Component({
+  name: 'background',
+  data: {
+    title: 'Hello World'
+  },
+  methods: {
+    getMessage() {
+      return this.message;
+    },
+    mounted(){
+        
+    },
+    updated(){
+   this.element.querySelector('h1').textContent = this.title;
+     this.backgroundUpdate();
+    }
+  }
+});
 ```
