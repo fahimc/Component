@@ -64,3 +64,8 @@ var componentStringTemplate = new Component({
     }
   }
 }, '<h1></h1><p>this is dynamically added</p>\n<button>click here</button>');
+var StateManager = {
+  init: function init() {
+    console.log(ComponentManager);
+  }
+}.init();

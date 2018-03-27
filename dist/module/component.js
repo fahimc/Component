@@ -1,6 +1,7 @@
 const ComponentManager = {
     componentCollection: {},
     instanceCollection: [],
+    plugins: [],
     init() {
         document.addEventListener('DOMContentLoaded', this.onLoad.bind(this));
     },
@@ -20,7 +21,15 @@ const ComponentManager = {
             mutations.forEach((item) => {
                 if (item.removedNodes.length) {
                     item.removedNodes.forEach((element) => {
-                        if (element.component) element.component.unmounted();
+                        if (element.component) {
+                            element.component.unmounted();
+                            for(var a = 0;a<this.instanceCollection.length;++a){
+                                    if(this.instanceCollection[instance] == element.component){
+                                        this.collection.splice(a,1);    
+                                        break;
+                                    }
+                            }
+                        }
                     });
                 }
                 if (item.addedNodes.length) {
@@ -51,6 +60,7 @@ const ComponentManager = {
         if(template)element.innerHTML = typeof template == 'string' ? template : template.innerHTML;
         instance.mounted();
         instance.updated();
+        this.instanceCollection.push(instance);
     }
 };
 
@@ -88,6 +98,10 @@ class ComponentInstance {
             }
         }
 
+        ComponentManager.plugins.forEach((plugin)=>{
+            if(plugin)plugin(this);
+        });
+
     }
     mounted() {
 
@@ -100,4 +114,5 @@ class ComponentInstance {
     }
 }
 ComponentManager.init();
+
 export default Component;

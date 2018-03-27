@@ -1,6 +1,7 @@
 const ComponentManager = {
     componentCollection: {},
     instanceCollection: [],
+    plugins: [],
     init() {
         document.addEventListener('DOMContentLoaded', this.onLoad.bind(this));
     },
@@ -22,7 +23,7 @@ const ComponentManager = {
                     item.removedNodes.forEach((element) => {
                         if (element.component) {
                             element.component.unmounted();
-                            for(var=0;a<this.instanceCollection.length;++a){
+                            for(var a = 0;a<this.instanceCollection.length;++a){
                                     if(this.instanceCollection[instance] == element.component){
                                         this.collection.splice(a,1);    
                                         break;
@@ -96,6 +97,10 @@ class ComponentInstance {
                 this[key] = methods[key];
             }
         }
+
+        ComponentManager.plugins.forEach((plugin)=>{
+            if(plugin)plugin(this);
+        });
 
     }
     mounted() {

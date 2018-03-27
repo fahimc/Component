@@ -1,1 +1,240 @@
-"use strict";var _createClass=function(){function e(e,t){for(var n=0;n<t.length;n++){var o=t[n];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}return function(t,n,o){return n&&e(t.prototype,n),o&&e(t,o),t}}();function _classCallCheck(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Array.prototype.forEach||(Array.prototype.forEach=function(e,t){if("function"!=typeof e)throw new TypeError(e+" is not a function");var n=this;t=t||this;for(var o=0,r=n.length;o!==r;++o)e.call(t,n[o],o,n)}),NodeList.prototype.forEach=Array.prototype.forEach,window.MutationObserver=window.MutationObserver||function(e){function t(e){this.i=[],this.m=e}function n(t){var n,o={type:null,target:null,addedNodes:[],removedNodes:[],previousSibling:null,nextSibling:null,attributeName:null,attributeNamespace:null,oldValue:null};for(n in t)o[n]!==e&&t[n]!==e&&(o[n]=t[n]);return o}function o(t,o){var u=a(t,o);return function(l){var s,d=l.length;o.a&&3===t.nodeType&&t.nodeValue!==u.a&&l.push(new n({type:"characterData",target:t,oldValue:u.a})),o.b&&u.b&&r(l,t,u.b,o.f),(o.c||o.g)&&(s=function(t,o,a,u){function l(e,o,a,i,c){var l,d,f,h=e.length-1;for(c=-~((h-c)/2);f=e.pop();)l=a[f.j],d=i[f.l],u.c&&c&&Math.abs(f.j-f.l)>=h&&(t.push(n({type:"childList",target:o,addedNodes:[l],removedNodes:[l],nextSibling:l.nextSibling,previousSibling:l.previousSibling})),c--),u.b&&d.b&&r(t,l,d.b,u.f),u.a&&3===l.nodeType&&l.nodeValue!==d.a&&t.push(n({type:"characterData",target:l,oldValue:d.a})),u.g&&s(l,d)}function s(o,a){for(var f,h,p,m,v,b=o.childNodes,g=a.c,T=b.length,y=g?g.length:0,C=0,N=0,E=0;N<T||E<y;)m=b[N],v=(p=g[E])&&p.node,m===v?(u.b&&p.b&&r(t,m,p.b,u.f),u.a&&p.a!==e&&m.nodeValue!==p.a&&t.push(n({type:"characterData",target:m,oldValue:p.a})),h&&l(h,o,b,g,C),u.g&&(m.childNodes.length||p.c&&p.c.length)&&s(m,p),N++,E++):(d=!0,f||(f={},h=[]),m&&(f[p=i(m)]||(f[p]=!0,-1===(p=c(g,m,E,"node"))?u.c&&(t.push(n({type:"childList",target:o,addedNodes:[m],nextSibling:m.nextSibling,previousSibling:m.previousSibling})),C++):h.push({j:N,l:p})),N++),v&&v!==b[N]&&(f[p=i(v)]||(f[p]=!0,-1===(p=c(b,v,N))?u.c&&(t.push(n({type:"childList",target:a.node,removedNodes:[v],nextSibling:g[E+1],previousSibling:g[E-1]})),C--):h.push({j:p,l:E})),E++));h&&l(h,o,b,g,C)}var d;return s(o,a),d}(l,t,u,o)),(s||l.length!==d)&&(u=a(t,o))}}function r(t,o,r,a){for(var i,u,c={},l=o.attributes,d=l.length;d--;)u=(i=l[d]).name,a&&a[u]===e||(s(o,i)!==r[u]&&t.push(n({type:"attributes",target:o,attributeName:u,oldValue:r[u],attributeNamespace:i.namespaceURI})),c[u]=!0);for(u in r)c[u]||t.push(n({target:o,type:"attributes",attributeName:u,oldValue:r[u]}))}function a(e,t){var n=!0;return function e(o){var r={node:o};return!t.a||3!==o.nodeType&&8!==o.nodeType?(t.b&&n&&1===o.nodeType&&(r.b=u(o.attributes,function(e,n){return t.f&&!t.f[n.name]||(e[n.name]=s(o,n)),e})),n&&(t.c||t.a||t.b&&t.g)&&(r.c=function(e,t){for(var n=[],o=0;o<e.length;o++)n[o]=t(e[o],o,e);return n}(o.childNodes,e)),n=t.g):r.a=o.nodeValue,r}(e)}function i(e){try{return e.id||(e.mo_id=e.mo_id||d++)}catch(t){try{return e.nodeValue}catch(e){return d++}}}function u(e,t){for(var n={},o=0;o<e.length;o++)n=t(n,e[o],o,e);return n}function c(e,t,n,o){for(;n<e.length;n++)if((o?e[n][o]:e[n])===t)return n;return-1}t._period=30,t.prototype={observe:function(e,n){for(var r={b:!!(n.attributes||n.attributeFilter||n.attributeOldValue),c:!!n.childList,g:!!n.subtree,a:!(!n.characterData&&!n.characterDataOldValue)},a=this.i,i=0;i<a.length;i++)a[i].s===e&&a.splice(i,1);var c;n.attributeFilter&&(r.f=u(n.attributeFilter,function(e,t){return e[t]=!0,e})),a.push({s:e,o:o(e,r)}),this.h||(c=this,function e(){var n=c.takeRecords();n.length&&c.m(n,c),c.h=setTimeout(e,t._period)}())},takeRecords:function(){for(var e=[],t=this.i,n=0;n<t.length;n++)t[n].o(e);return e},disconnect:function(){this.i=[],clearTimeout(this.h),this.h=null}};var l=document.createElement("i");l.style.top=0;var s=(l="null"!=l.attributes.style.value)?function(e,t){return t.value}:function(e,t){return"style"!==t.name?t.value:e.style.cssText},d=1;return t}(void 0);var ComponentManager={componentCollection:{},instanceCollection:[],init:function(){document.addEventListener("DOMContentLoaded",this.onLoad.bind(this))},onLoad:function(){this.generateComponents(),this.observe()},generateComponents:function(){for(var e in this.componentCollection){var t=this.componentCollection[e].obj,n=this.componentCollection[e].template;this.createAllInstance(t,n)}},observe:function(){var e=this;new MutationObserver(function(t){t.forEach(function(t){t.removedNodes.length&&t.removedNodes.forEach(function(e){e.component&&e.component.unmounted()}),t.addedNodes.length&&t.addedNodes.forEach(function(t){var n=t.getAttribute(""+Component.CONST.COMPONENT_ATTRIBUTE);if(n){var o=e.componentCollection[n].obj,r=e.componentCollection[n].template;e.createInstance(t,o,r)}})})}).observe(document.body,{childList:!0})},createAllInstance:function(e,t){var n=this;document.querySelectorAll("["+Component.CONST.COMPONENT_ATTRIBUTE+'="'+e.name+'"]').forEach(function(o){n.createInstance(o,e,t)})},createInstance:function(e,t,n){var o=document.querySelector("["+Component.CONST.COMPONENT_ATTRIBUTE+'="'+t.name+'"]['+Component.CONST.TEMPLATE_ATTRIBUTE+"]"),r=o||n,a=new ComponentInstance(e,t.data,t.methods);e.component=a,r&&(e.innerHTML="string"==typeof r?r:r.innerHTML),a.mounted(),a.updated()}},Component=function e(t,n){_classCallCheck(this,e),ComponentManager.componentCollection[t.name]={obj:t,template:n}};Component.CONST={COMPONENT_ATTRIBUTE:"data-component",TEMPLATE_ATTRIBUTE:"data-template"};var ComponentInstance=function(){function e(t,n,o){var r=this;if(_classCallCheck(this,e),this.element=t,n){var a=function(e){Object.defineProperty(r,e,{get:function(){return this["_"+e]},set:function(t){this["_"+e]=t,this.updated()}}),r[e]=n[e]};for(var i in n)a(i)}if(o)for(var i in o)this[i]=o[i]}return _createClass(e,[{key:"mounted",value:function(){}},{key:"unmounted",value:function(){}},{key:"updated",value:function(){}}]),e}();ComponentManager.init();
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+(function () {
+    if (!Array.prototype.forEach) {
+        Array.prototype.forEach = function forEach(callback, thisArg) {
+            if (typeof callback !== 'function') {
+                throw new TypeError(callback + ' is not a function');
+            }
+            var array = this;
+            thisArg = thisArg || this;
+            for (var i = 0, l = array.length; i !== l; ++i) {
+                callback.call(thisArg, array[i], i, array);
+            }
+        };
+    }
+    NodeList.prototype.forEach = Array.prototype.forEach;
+})();
+// mutationobserver-shim v0.3.2 (github.com/megawac/MutationObserver.js)
+// Authors: Graeme Yeates (github.com/megawac) 
+window.MutationObserver = window.MutationObserver || function (w) {
+    function v(a) {
+        this.i = [];this.m = a;
+    }function I(a) {
+        (function c() {
+            var d = a.takeRecords();d.length && a.m(d, a);a.h = setTimeout(c, v._period);
+        })();
+    }function p(a) {
+        var b = { type: null, target: null, addedNodes: [], removedNodes: [], previousSibling: null, nextSibling: null, attributeName: null, attributeNamespace: null, oldValue: null },
+            c;for (c in a) {
+            b[c] !== w && a[c] !== w && (b[c] = a[c]);
+        }return b;
+    }function J(a, b) {
+        var c = C(a, b);return function (d) {
+            var f = d.length,
+                n;b.a && 3 === a.nodeType && a.nodeValue !== c.a && d.push(new p({ type: "characterData", target: a, oldValue: c.a }));b.b && c.b && A(d, a, c.b, b.f);if (b.c || b.g) n = K(d, a, c, b);if (n || d.length !== f) c = C(a, b);
+        };
+    }function L(a, b) {
+        return b.value;
+    }function M(a, b) {
+        return "style" !== b.name ? b.value : a.style.cssText;
+    }function A(a, b, c, d) {
+        for (var f = {}, n = b.attributes, k, g, x = n.length; x--;) {
+            k = n[x], g = k.name, d && d[g] === w || (D(b, k) !== c[g] && a.push(p({ type: "attributes", target: b, attributeName: g, oldValue: c[g], attributeNamespace: k.namespaceURI })), f[g] = !0);
+        }for (g in c) {
+            f[g] || a.push(p({ target: b,
+                type: "attributes", attributeName: g, oldValue: c[g] }));
+        }
+    }function K(a, b, c, d) {
+        function f(b, c, f, k, y) {
+            var g = b.length - 1;y = -~((g - y) / 2);for (var h, l, e; e = b.pop();) {
+                h = f[e.j], l = k[e.l], d.c && y && Math.abs(e.j - e.l) >= g && (a.push(p({ type: "childList", target: c, addedNodes: [h], removedNodes: [h], nextSibling: h.nextSibling, previousSibling: h.previousSibling })), y--), d.b && l.b && A(a, h, l.b, d.f), d.a && 3 === h.nodeType && h.nodeValue !== l.a && a.push(p({ type: "characterData", target: h, oldValue: l.a })), d.g && n(h, l);
+            }
+        }function n(b, c) {
+            for (var g = b.childNodes, q = c.c, x = g.length, v = q ? q.length : 0, h, l, e, m, t, z = 0, u = 0, r = 0; u < x || r < v;) {
+                m = g[u], t = (e = q[r]) && e.node, m === t ? (d.b && e.b && A(a, m, e.b, d.f), d.a && e.a !== w && m.nodeValue !== e.a && a.push(p({ type: "characterData", target: m, oldValue: e.a })), l && f(l, b, g, q, z), d.g && (m.childNodes.length || e.c && e.c.length) && n(m, e), u++, r++) : (k = !0, h || (h = {}, l = []), m && (h[e = E(m)] || (h[e] = !0, -1 === (e = F(q, m, r, "node")) ? d.c && (a.push(p({ type: "childList", target: b, addedNodes: [m], nextSibling: m.nextSibling, previousSibling: m.previousSibling })), z++) : l.push({ j: u, l: e })), u++), t && t !== g[u] && (h[e = E(t)] || (h[e] = !0, -1 === (e = F(g, t, u)) ? d.c && (a.push(p({ type: "childList", target: c.node, removedNodes: [t], nextSibling: q[r + 1], previousSibling: q[r - 1] })), z--) : l.push({ j: e, l: r })), r++));
+            }l && f(l, b, g, q, z);
+        }var k;n(b, c);return k;
+    }function C(a, b) {
+        var c = !0;return function f(a) {
+            var k = { node: a };!b.a || 3 !== a.nodeType && 8 !== a.nodeType ? (b.b && c && 1 === a.nodeType && (k.b = G(a.attributes, function (c, f) {
+                if (!b.f || b.f[f.name]) c[f.name] = D(a, f);return c;
+            })), c && (b.c || b.a || b.b && b.g) && (k.c = N(a.childNodes, f)), c = b.g) : k.a = a.nodeValue;return k;
+        }(a);
+    }function E(a) {
+        try {
+            return a.id || (a.mo_id = a.mo_id || H++);
+        } catch (b) {
+            try {
+                return a.nodeValue;
+            } catch (c) {
+                return H++;
+            }
+        }
+    }function N(a, b) {
+        for (var c = [], d = 0; d < a.length; d++) {
+            c[d] = b(a[d], d, a);
+        }return c;
+    }function G(a, b) {
+        for (var c = {}, d = 0; d < a.length; d++) {
+            c = b(c, a[d], d, a);
+        }return c;
+    }function F(a, b, c, d) {
+        for (; c < a.length; c++) {
+            if ((d ? a[c][d] : a[c]) === b) return c;
+        }return -1;
+    }v._period = 30;v.prototype = { observe: function observe(a, b) {
+            for (var c = { b: !!(b.attributes || b.attributeFilter || b.attributeOldValue), c: !!b.childList, g: !!b.subtree,
+                a: !(!b.characterData && !b.characterDataOldValue) }, d = this.i, f = 0; f < d.length; f++) {
+                d[f].s === a && d.splice(f, 1);
+            }b.attributeFilter && (c.f = G(b.attributeFilter, function (a, b) {
+                a[b] = !0;return a;
+            }));d.push({ s: a, o: J(a, c) });this.h || I(this);
+        }, takeRecords: function takeRecords() {
+            for (var a = [], b = this.i, c = 0; c < b.length; c++) {
+                b[c].o(a);
+            }return a;
+        }, disconnect: function disconnect() {
+            this.i = [];clearTimeout(this.h);this.h = null;
+        } };var B = document.createElement("i");B.style.top = 0;var D = (B = "null" != B.attributes.style.value) ? L : M,
+        H = 1;return v;
+}(void 0);
+//# sourceMappingURL=mutationobserver.map
+var ComponentManager = {
+    componentCollection: {},
+    instanceCollection: [],
+    plugins: [],
+    init: function init() {
+        document.addEventListener('DOMContentLoaded', this.onLoad.bind(this));
+    },
+    onLoad: function onLoad() {
+        this.generateComponents();
+        this.observe();
+    },
+    generateComponents: function generateComponents() {
+        for (var key in this.componentCollection) {
+            var obj = this.componentCollection[key].obj;
+            var template = this.componentCollection[key].template;
+            this.createAllInstance(obj, template);
+        };
+    },
+    observe: function observe() {
+        var _this = this;
+
+        var observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (item) {
+                if (item.removedNodes.length) {
+                    item.removedNodes.forEach(function (element) {
+                        if (element.component) {
+                            element.component.unmounted();
+                            for (var a = 0; a < _this.instanceCollection.length; ++a) {
+                                if (_this.instanceCollection[instance] == element.component) {
+                                    _this.collection.splice(a, 1);
+                                    break;
+                                }
+                            }
+                        }
+                    });
+                }
+                if (item.addedNodes.length) {
+                    item.addedNodes.forEach(function (element) {
+                        var componentName = element.getAttribute('' + Component.CONST.COMPONENT_ATTRIBUTE);
+                        if (componentName) {
+                            var obj = _this.componentCollection[componentName].obj;
+                            var template = _this.componentCollection[componentName].template;
+                            _this.createInstance(element, obj, template);
+                        }
+                    });
+                }
+            });
+        });
+        observer.observe(document.body, { childList: true });
+    },
+    createAllInstance: function createAllInstance(obj, template) {
+        var _this2 = this;
+
+        var elements = document.querySelectorAll('[' + Component.CONST.COMPONENT_ATTRIBUTE + '="' + obj.name + '"]');
+        elements.forEach(function (element) {
+            _this2.createInstance(element, obj, template);
+        });
+    },
+    createInstance: function createInstance(element, obj, templateString) {
+        var templateElement = document.querySelector('[' + Component.CONST.COMPONENT_ATTRIBUTE + '="' + obj.name + '"][' + Component.CONST.TEMPLATE_ATTRIBUTE + ']');
+        var template = templateElement ? templateElement : templateString;
+        var instance = new ComponentInstance(element, obj.data, obj.methods);
+        element.component = instance;
+        if (template) element.innerHTML = typeof template == 'string' ? template : template.innerHTML;
+        instance.mounted();
+        instance.updated();
+        this.instanceCollection.push(instance);
+    }
+};
+
+var Component = function Component(obj, template) {
+    _classCallCheck(this, Component);
+
+    ComponentManager.componentCollection[obj.name] = { obj: obj, template: template };
+};
+
+;
+Component.CONST = {
+    COMPONENT_ATTRIBUTE: 'data-component',
+    TEMPLATE_ATTRIBUTE: 'data-template'
+};
+
+var ComponentInstance = function () {
+    function ComponentInstance(element, data, methods) {
+        var _this3 = this;
+
+        _classCallCheck(this, ComponentInstance);
+
+        this.element = element;
+        if (data) {
+            var _loop = function _loop(key) {
+
+                Object.defineProperty(_this3, key, {
+                    get: function get() {
+                        return this['_' + key];
+                    },
+                    set: function set(new_value) {
+                        this['_' + key] = new_value;
+                        this.updated();
+                    }
+                });
+                _this3[key] = data[key];
+            };
+
+            for (var key in data) {
+                _loop(key);
+            }
+        }
+        if (methods) {
+            for (var key in methods) {
+                this[key] = methods[key];
+            }
+        }
+
+        ComponentManager.plugins.forEach(function (plugin) {
+            if (plugin) plugin(_this3);
+        });
+    }
+
+    _createClass(ComponentInstance, [{
+        key: 'mounted',
+        value: function mounted() {}
+    }, {
+        key: 'unmounted',
+        value: function unmounted() {}
+    }, {
+        key: 'updated',
+        value: function updated() {}
+    }]);
+
+    return ComponentInstance;
+}();
+
+ComponentManager.init();
