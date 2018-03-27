@@ -25,7 +25,7 @@ let componentWithTemplate = new Component({
       return this.message;
     },
     mounted(){
-        
+        this.getStateManager().set('video.title','hello world');
     },
     updated(){
       this.element.querySelector('h1').textContent = this.message;

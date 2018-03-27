@@ -8,15 +8,17 @@ const StateManager = {
 		return dotNotationKey.split('.').reduce((o,i)=>o[i], this._state);
 	},
     init() {
-    	ComponentManager.plugins.push(ComponentManager.inject);
+    	ComponentManager.plugins.push(StateManager.inject);
     },
-    inject(){
-    	
+    inject(instance){
+    	instance.getStateManager = function (){
+    		return StateManager;
+    	}	
     },
     dotNotation(str,value){
-    	let arr = str.split('.');
-    	let last = arr.pop();
-    	let obj = this._state;
+    	var arr = str.split('.');
+    	var last = arr.pop();
+    	var obj = this._state;
     	arr.forEach((key)=>{
     		if(!obj[key]){
     			obj[key] = {};

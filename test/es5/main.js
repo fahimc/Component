@@ -42,7 +42,9 @@ var componentWithTemplate = new Component({
     getMessage: function getMessage() {
       return this.message;
     },
-    mounted: function mounted() {},
+    mounted: function mounted() {
+      this.getStateManager().set('video.title', 'hello world');
+    },
     updated: function updated() {
       this.element.querySelector('h1').textContent = this.message;
     },
@@ -79,10 +81,13 @@ var StateManager = {
     }, this._state);
   },
   init: function init() {
-
-    ComponentManager.plugins.push(ComponentManager.inject);
+    ComponentManager.plugins.push(StateManager.inject);
   },
-  inject: function inject() {},
+  inject: function inject(instance) {
+    instance.getStateManager = function () {
+      return StateManager;
+    };
+  },
   dotNotation: function dotNotation(str, value) {
     var arr = str.split('.');
     var last = arr.pop();
