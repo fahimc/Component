@@ -216,3 +216,6 @@ new Component({
   }
 });
 ```
+
+## Plugins
+[StateManager](https://gist.github.com/fahimc/e8cf37f2e4aa0021c7516353b313c88b)
