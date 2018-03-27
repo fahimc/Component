@@ -45,6 +45,9 @@ var componentWithTemplate = new Component({
     mounted: function mounted() {},
     updated: function updated() {
       this.element.querySelector('h1').textContent = this.message;
+    },
+    onStateChange: function onStateChange(stateManager) {
+      this.element.querySelector('h1').textContent = stateManager.get('video.title');
     }
   }
 });
@@ -65,7 +68,39 @@ var componentStringTemplate = new Component({
   }
 }, '<h1></h1><p>this is dynamically added</p>\n<button>click here</button>');
 var StateManager = {
+  _state: {},
+  set: function set(dotNotationKey, value) {
+    this.dotNotation(dotNotationKey, value);
+    this.dispatchToAll();
+  },
+  get: function get(dotNotationKey) {
+    return dotNotationKey.split('.').reduce(function (o, i) {
+      return o[i];
+    }, this._state);
+  },
   init: function init() {
-    console.log(ComponentManager);
+
+    ComponentManager.plugins.push(ComponentManager.inject);
+  },
+  inject: function inject() {},
+  dotNotation: function dotNotation(str, value) {
+    var arr = str.split('.');
+    var last = arr.pop();
+    var obj = this._state;
+    arr.forEach(function (key) {
+      if (!obj[key]) {
+        obj[key] = {};
+      }
+      obj = obj[key];
+    });
+    obj[last] = value;
+    return obj[last];
+  },
+  dispatchToAll: function dispatchToAll() {
+    ComponentManager.instanceCollection.forEach(function (instance) {
+      if (instance && instance.onStateChange) instance.onStateChange(StateManager);
+    });
   }
-}.init();
+};
+window.StateManager = StateManager;
+StateManager.init();

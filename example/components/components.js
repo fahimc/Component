@@ -29,6 +29,9 @@ let componentWithTemplate = new Component({
     },
     updated(){
       this.element.querySelector('h1').textContent = this.message;
+    },
+    onStateChange(stateManager){
+      this.element.querySelector('h1').textContent = stateManager.get('video.title');
     }
   }
 });
