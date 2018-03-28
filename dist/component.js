@@ -56,11 +56,11 @@ const ComponentManager = {
         let templateElement = document.querySelector(`[${Component.CONST.COMPONENT_ATTRIBUTE}="${obj.name}"][${Component.CONST.TEMPLATE_ATTRIBUTE}]`);
         let template = templateElement ? templateElement : templateString;
         let instance = new ComponentInstance(element, obj.data, obj.methods);
+        this.instanceCollection.push(instance);
         element.component = instance;
         if(template)element.innerHTML = typeof template == 'string' ? template : template.innerHTML;
         instance.mounted();
         instance.updated();
-        this.instanceCollection.push(instance);
     }
 };
 

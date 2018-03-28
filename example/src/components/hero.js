@@ -8,7 +8,7 @@ let componentWithTemplate = new Component({
       return this.message;
     },
     mounted(){
-        this.getStateManager().set('video.title','hello world');
+        this.getStateManager().set('video.title','Hero component: State has changed');
     },
     updated(){
       this.element.querySelector('h1').textContent = this.message;
