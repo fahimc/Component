@@ -220,4 +220,5 @@ new Component({
 ```
 
 ## Plugins
-[StateManager](https://gist.github.com/fahimc/e8cf37f2e4aa0021c7516353b313c88b)
+[StateManager](https://gist.github.com/fahimc/e8cf37f2e4aa0021c7516353b313c88b)  
+[EventBus](https://gist.github.com/fahimc/e1b155f89ad338e2e0fd4f680e4d1769)
