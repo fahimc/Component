@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/fahimc/Component#readme",
   "dependencies": {
+    "browser-sync": "^2.23.6",
     "browserify": "^16.1.0",
     "gulp": "^3.9.1",
     "gulp-minify": "^2.1.0"
