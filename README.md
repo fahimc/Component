@@ -19,6 +19,8 @@ The best thing about this framework is that it can work with everything and does
 - If a new element is added to the Dom and is a component it will automatically instantiate a new component for that element.
 - if an element is removed from the Dom.
  **unmount()** is called on the component.
+ 
+![diagram](https://docs.google.com/drawings/d/e/2PACX-1vQ-h3elcZZlrNHIKSwvs5CfogOvFNowyfvcREyFihwhikzT2sjUR5q6aClZO7T4AtlSpBX0eG9J79cA/pub?w=1120&h=2002)  
 
 # how to use
 
