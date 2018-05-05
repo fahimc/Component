@@ -2,12 +2,13 @@ const ComponentManager = {
     componentCollection: {},
     instanceCollection: [],
     plugins: [],
+    observer: null,
     init() {
         document.addEventListener('DOMContentLoaded', this.onLoad.bind(this));
     },
     onLoad() {
-        this.generateComponents();
         this.observe();
+        this.generateComponents();
     },
     generateComponents() {
         for (let key in this.componentCollection) {
@@ -45,6 +46,7 @@ const ComponentManager = {
             });
         });
         observer.observe(document.body, { childList: true });
+        this.observer = observer;
     },
     createAllInstance(obj,template) {
         let elements = document.querySelectorAll(`[${Component.CONST.COMPONENT_ATTRIBUTE}="${obj.name}"]`);
@@ -61,6 +63,7 @@ const ComponentManager = {
         if(template)element.innerHTML = typeof template == 'string' ? template : template.innerHTML;
         instance.mounted();
         instance.updated();
+        this.observer.observe(element.parentNode, { childList: true });
     }
 };
 
