@@ -25,8 +25,8 @@ const ComponentManager = {
                         if (element.component) {
                             element.component.unmounted();
                             for(var a = 0;a<this.instanceCollection.length;++a){
-                                    if(this.instanceCollection[instance] == element.component){
-                                        this.collection.splice(a,1);    
+                                    if(this.instanceCollection[a] == element.component){
+                                        this.instanceCollection.splice(a,1);    
                                         break;
                                     }
                             }
